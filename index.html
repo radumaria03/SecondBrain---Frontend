@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SecondBrain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+  <h1>SecondBrain</h1>
+
+  <div class="header-actions">
+
+    <label class="upload-btn">
+      Upload File
+      <input type="file" id="fileInput" multiple>
+    </label>
+
+    <button id="loginBtn" class="login-btn">Login</button>
+    <button id="logoutBtn" class="login-btn" style="display:none;">Logout</button>
+
+    </div>
+  </header>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="login-modal">
+  <div class="login-box">
+
+    <div class="auth-tabs">
+      <button id="loginTab" class="auth-tab active">Login</button>
+      <button id="registerTab" class="auth-tab">Register</button>
+    </div>
+
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+
+    <button id="submitAuth">Login</button>
+
+  </div>
+</div>
+
+    <!-- Chat Area -->
+    <main id="chatContainer" class="chat-container">
+      <div class="message bot">Start shaping your personal Chat Assistant, everything is memorized and used in answers later
+      </div>
+    </main>
+
+    <!-- Input Area -->
+    <footer class="input-area">
+      <input id="chatInput" type="text" placeholder="Type a message..." />
+      <button id="sendBtn">Send</button>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
