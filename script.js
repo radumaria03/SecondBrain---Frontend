@@ -27,7 +27,7 @@ async function sendMessage() {
 
   try {
         // --- Sending the input to server ---
-        const response = await fetch("secondbrain-demo.duckdns.org/api/chat", {
+        const response = await fetch("https://secondbrain-demo.duckdns.org/api/chat", {
             method: "POST",
             headers: {"Content-Type": "application/json",
                "Authorization": `Bearer ${token}`
@@ -70,7 +70,7 @@ async function sendFiles(){
     }
    
     try {
-    const response = await fetch("secondbrain-demo.duckdns.org/api/upload", {
+    const response = await fetch("https://secondbrain-demo.duckdns.org/api/upload", {
       method: "POST",
       headers:{
       "Authorization": `Bearer ${token}`
