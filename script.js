@@ -142,8 +142,8 @@ submitAuth.addEventListener("click", async () => {
   const password = passwordInput.value;
 
   const endpoint = authMode === "login"
-    ? "http://127.0.0.1:8000/login"
-    : "http://127.0.0.1:8000/register";
+    ? "https://secondbrain-demo.duckdns.org/login"
+    : "https://secondbrain-demo.duckdns.org/api/register";
 
   try {
 
