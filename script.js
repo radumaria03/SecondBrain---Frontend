@@ -27,7 +27,7 @@ async function sendMessage() {
 
   try {
         // --- Sending the input to server ---
-        const response = await fetch("http://127.0.0.1:8000/chat", {
+        const response = await fetch("secondbrain-demo.duckdns.org/api/chat", {
             method: "POST",
             headers: {"Content-Type": "application/json",
                "Authorization": `Bearer ${token}`
@@ -70,7 +70,7 @@ async function sendFiles(){
     }
    
     try {
-    const response = await fetch("http://127.0.0.1:8000/upload", {
+    const response = await fetch("secondbrain-demo.duckdns.org/api/upload", {
       method: "POST",
       headers:{
       "Authorization": `Bearer ${token}`
@@ -142,7 +142,7 @@ submitAuth.addEventListener("click", async () => {
   const password = passwordInput.value;
 
   const endpoint = authMode === "login"
-    ? "https://secondbrain-demo.duckdns.org/login"
+    ? "https://secondbrain-demo.duckdns.org/api/login"
     : "https://secondbrain-demo.duckdns.org/api/register";
 
   try {
