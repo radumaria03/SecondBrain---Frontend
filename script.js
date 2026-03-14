@@ -22,27 +22,36 @@ async function sendMessage() {
   addMessage(text, "user");
   input.value = "";
 
-  const typingBubble = addMessage("Thinking...","bot" );
+  const typingBubble = addMessage("Thinking...", "bot");
   const token = localStorage.getItem("token");
 
   try {
-        // --- Sending the input to server ---
-        const response = await fetch("https://secondbrain-demo.duckdns.org/api/chat", {
-            method: "POST",
-            headers: {"Content-Type": "application/json",
-               "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({ question: text })
-        });
-        // - the received output 
+    const response = await fetch("https://secondbrain-demo.duckdns.org/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ question: text })
+    });
 
-        const data = await response.json();
-        typingBubble.innerText = data.answer;
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
 
-    } catch (err) {
-        typingBubble.innerText = "⚠️ Error connecting to server";
-        console.error(err);
+    typingBubble.innerText = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      const chunk = decoder.decode(value);
+      typingBubble.innerText += chunk;
     }
+
+  } catch (err) {
+    typingBubble.innerText = "⚠️ Error connecting to server";
+    console.error(err);
+  }
 }
 
 sendBtn.addEventListener("click", sendMessage);
